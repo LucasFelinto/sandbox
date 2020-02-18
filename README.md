@@ -11,3 +11,5 @@
 - Giovanna Nascimento
 - Jackson Silva
 - Raquel Gabrielly
+- Miguel Gabriel
+
