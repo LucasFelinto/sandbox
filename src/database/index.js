@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import { config } from 'dotenv';
+
 
 class Database {
   constructor() {
@@ -6,10 +8,11 @@ class Database {
   }
 
   mongo() {
+    config();
     this.mongoConnection = mongoose.connect(
-      'mongodb+srv://sandbox:sandbox@cluster0-lcntc.mongodb.net/test?retryWrites=true&w=majority',
-      { useNewUrlParser: true, useFindAndModify: true, useUnifiedTopology: true }
-    )
+      `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-lcntc.mongodb.net/test?retryWrites=true&w=majority`,
+      { useNewUrlParser: true, useFindAndModify: true, useUnifiedTopology: true },
+    );
   }
 }
 
