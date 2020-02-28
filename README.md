@@ -3,7 +3,7 @@
 
 ## Colaboradores
 
-- Bruno manoel Miranda
+- Bruno Manoel Miranda
 
 - Thierry Matheus
 - Lucas Felinto
