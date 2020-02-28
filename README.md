@@ -2,6 +2,9 @@
 
 
 ## Colaboradores
+
+- Bruno manoel Miranda
+
 - Thierry Matheus
 - Lucas Felinto
 - Khevin Karlos
@@ -12,5 +15,3 @@
 - Jackson Silva
 - Raquel Gabrielly
 - Miguel Gabriel
-- BRUNO O MELHOR DO IFPE
-
