@@ -1,13 +1,15 @@
-import mongoose from 'mongoose';
+import mongoose, { Mongoose, mongo } from 'mongoose';
+import bcrypt from 'bcryptjs';
 
 const UserSchema = new mongoose.Schema({
   nome: {
     type: String,
-    require:true
+    required: true,
   },
   email: {
     type: String,
-    required: true
+    required: true,
+    lowercase: true,
   },
   cpf: {
     type: String,
@@ -19,7 +21,7 @@ const UserSchema = new mongoose.Schema({
   },
   senha: {
     type: String,
-    required: true
+    required: true,
   },
   type: {
     type: String,
@@ -29,4 +31,49 @@ const UserSchema = new mongoose.Schema({
 });
 
 
-export default mongoose.model("User", UserSchema);
+const AlunoSchema = new mongoose.Schema({
+  matricula: {
+    type: String,
+    required: true,
+  },
+  matricula: {
+    type: String,
+    require: true,
+  },
+  turma: {
+    type: String,
+    required: true
+  }
+});
+
+const FuncionarioSchema = new mongoose.Schema({
+  cargo: {
+    type: String,
+    required: true,
+  },
+  setor: {
+    type: String,
+    required: true,
+  },
+  siape: {
+    type: String,
+    required: true,
+  },
+});
+
+UserSchema.pre('save', async function(next) {
+  const hash = await bcrypt.hash(this.senha, 10);
+  this.senha = hash;
+
+  next();
+});
+
+
+AlunoSchema.add(UserSchema);
+FuncionarioSchema.add(UserSchema);
+
+
+export default {
+  Aluno: mongoose.model('Aluno', AlunoSchema),
+  Funcionario: mongoose.model('Funcionario', FuncionarioSchema),
+}
