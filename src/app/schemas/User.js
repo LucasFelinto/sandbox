@@ -23,10 +23,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  type: {
-    type: String,
-    required: true,
-  },
   veiculos: [],
 });
 
@@ -35,10 +31,7 @@ const AlunoSchema = new mongoose.Schema({
   matricula: {
     type: String,
     required: true,
-  },
-  matricula: {
-    type: String,
-    require: true,
+    unique: true,
   },
   turma: {
     type: String,
@@ -58,6 +51,7 @@ const FuncionarioSchema = new mongoose.Schema({
   siape: {
     type: String,
     required: true,
+    unique: true,
   },
 });
 
@@ -76,4 +70,4 @@ FuncionarioSchema.add(UserSchema);
 export default {
   Aluno: mongoose.model('Aluno', AlunoSchema),
   Funcionario: mongoose.model('Funcionario', FuncionarioSchema),
-}
+};
