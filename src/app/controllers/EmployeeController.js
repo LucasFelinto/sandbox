@@ -1,6 +1,6 @@
 import User from '../schemas/User';
 
-class EmployeeControlle {
+class EmployeeController {
   async store(req, res) {
     const {
       nome,
@@ -38,4 +38,4 @@ class EmployeeControlle {
   }
 }
 
-export default new EmployeeControlle();
+export default new EmployeeController();

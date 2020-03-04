@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-import StudentController from './app/ctrollers/StudentController';
-import EmployeeController from './app/ctrollers/EmployeeController'
+import StudentController from './app/controllers/StudentController';
+import EmployeeController from './app/controllers/EmployeeController'
 
 const routes = new Router();
 
