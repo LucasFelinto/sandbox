@@ -10,7 +10,7 @@ class Database {
   mongo() {
     config();
     this.mongoConnection = mongoose.connect(
-      `mongodb://localhost:27017/test`,
+      `mongodb+srv://sandbox:sandbox@cluster0-lcntc.mongodb.net/test?retryWrites=true&w=majority`,
       { useNewUrlParser: true, useFindAndModify: true, useUnifiedTopology: true },
     );
   }
