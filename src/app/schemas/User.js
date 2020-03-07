@@ -1,5 +1,6 @@
 import mongoose, { Mongoose, mongo } from 'mongoose';
 import bcrypt from 'bcryptjs';
+//import Vehicle from './Vehicle/';
 
 const UserSchema = new mongoose.Schema({
   nome: {
