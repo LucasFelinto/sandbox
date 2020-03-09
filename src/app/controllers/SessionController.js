@@ -11,9 +11,6 @@ class SessionController {
     const users = {
       async student() {
         const student = await User.Aluno.findOne({ matricula });
-
-        console.log("MATRICULA", matricula);
-        console.log("ALUNO", student);
         
         if (!student) {
           return res.status(401).json({ error: 'Usuário não encotrado' });
@@ -31,7 +28,32 @@ class SessionController {
             nome,
             matricula,
           },
-          token: jwt.sign({ id }, 'ebbf27b2510115c1fcf05b250762a924', {
+          token: jwt.sign({ id, type: 'Aluno' }, 'ebbf27b2510115c1fcf05b250762a924', {
+            expiresIn: '1d'
+          })
+        };
+      },
+
+      async employee() {
+        const employee = await User.Funcionario.findOne({ siape });
+
+        if (!employee) {
+          return res.status(401).json({ error: 'Usuário não encotrado' });
+        }
+
+        if (!await bcrypt.compare(senha, employee.senha)) {
+          return res.status(400).json({ error: 'Senha invalida' });
+        }
+        
+        const { id, nome } = employee;
+
+        return {
+          user: {
+            id,
+            nome,
+            siape,
+          },
+          token: jwt.sign({ id, type: 'Funcionario' }, 'ebbf27b2510115c1fcf05b250762a924', {
             expiresIn: '1d'
           })
         };
