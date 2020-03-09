@@ -2,6 +2,55 @@ import mongoose, { Mongoose, mongo } from 'mongoose';
 import bcrypt from 'bcryptjs';
 //import Vehicle from './Vehicle/';
 
+const MotoSchema = new mongoose.Schema({
+  placa: {
+    type: String,
+    required: true
+  },
+  modelo: {
+    type: String,
+    required: true
+  },
+  cor: {
+    type: String,
+    required: true
+  },
+  ano: {
+    type: Number,
+    required: true
+  },
+});
+
+const CarroSchema = new mongoose.Schema({
+  placa: {
+    type: String,
+    required: true
+  },
+  modelo: {
+    type: String,
+    required: true
+  },
+  cor: {
+    type: String,
+    required: true
+  },
+  ano: {
+    type: Number,
+    required: true
+  },
+});
+
+const BicicletaSchema = new mongoose.Schema({
+  cor: {
+    type: String,
+    required: true
+  },
+  marca: {
+    type: String,
+    required: true
+  }
+});
+
 const UserSchema = new mongoose.Schema({
   nome: {
     type: String,
@@ -24,9 +73,22 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  veiculos: [],
+  moto: {
+    type: [MotoSchema],
+    required: false,
+    default: undefined,
+  },
+  carro: {
+    type: [CarroSchema],
+    required: false,
+    default: undefined,
+  },
+  Bicicleta: {
+    type: [BicicletaSchema],
+    required: false,
+    default: undefined,
+  },
 });
-
 
 const AlunoSchema = new mongoose.Schema({
   matricula: {
@@ -71,4 +133,7 @@ FuncionarioSchema.add(UserSchema);
 export default {
   Aluno: mongoose.model('Aluno', AlunoSchema),
   Funcionario: mongoose.model('Funcionario', FuncionarioSchema),
+  Moto: mongoose.model('Moto', MotoSchema),
+  Carro: mongoose.model('Carro', CarroSchema),
+  Bicicleta: mongoose.model('Bicicleta', BicicletaSchema),
 };
